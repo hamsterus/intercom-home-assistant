@@ -1,0 +1,7 @@
+Source used by the project:
+https://www.soundjay.com/door_c2026/doorbell-1.mp3
+
+The application expects the actual local audio file at:
+/config/www/doorbell.mp3
+
+This text file is only a source record; the MP3 binary is intentionally not committed here.
