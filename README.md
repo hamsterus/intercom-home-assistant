@@ -19,11 +19,11 @@ www/
 │   └── sip.js
 │
 └── dreame.v3/
-    ├── dreame-card-v1.js
+    ├── dreame-card.js
     └── dreame-button-card.js
 ```
 
-Внутри V3 имена файлов не содержат `v3`: версия определяется папкой (`intercom.v3`, `dreame.v3`). Это позволяет в дальнейшем делать V4 рядом с V3 без конфликтов и без изменения существующей версии.
+Внутри V3 имена файлов не содержат `v3` или `v1`: версия определяется папкой (`intercom.v3`, `dreame.v3`). Это позволяет в дальнейшем делать V4 рядом с V3 без конфликтов и без изменения существующей версии.
 
 ## Dashboard
 
@@ -72,6 +72,11 @@ UI использует Shadow DOM и отдельную загрузку CSS с
 
 - `vacuum.dreamebot_l20_ultra_complete`;
 - `camera.dreamebot_l20_ultra_complete_map`.
+
+Файлы карточек:
+
+- `www/dreame.v3/dreame-card.js` — полноэкранная карта и управление Dreame;
+- `www/dreame.v3/dreame-button-card.js` — компактная карточка для основного dashboard.
 
 Полная карточка поддерживает карту, rotation/zoom, комнаты, уборку, pause, stop и возврат на базу. Компактная карточка используется на основном dashboard и ведёт на отдельную страницу Dreame.
 
