@@ -1,0 +1,9 @@
+api:
+  username: __GO2RTC_USER__
+  password: __GO2RTC_PASSWORD__
+rtsp:
+  username: __GO2RTC_USER__
+  password: __GO2RTC_PASSWORD__
+
+streams:
+  bas_ip: rtsp://__BAS_IP_USER__:__BAS_IP_PASSWORD__@__BAS_IP_HOST__:8554/ch01#media=video
