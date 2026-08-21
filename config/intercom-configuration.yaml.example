@@ -1,0 +1,57 @@
+# Intercom package/configuration example
+# Replace __...__ placeholders locally. Do not commit real credentials.
+
+shell_command:
+  intercom_snapshot: >
+    curl -o /config/www/intercom/photos/{{ filename }}.jpg
+    "http://__GO2RTC_USER__:__GO2RTC_PASSWORD__@__HA_HOST__:1984/api/frame.jpeg?src=bas_ip"
+
+  intercom_save_call: >
+    python3 /config/intercom_save_call.py
+    '{{ id }}' '{{ time }}' '{{ timestamp }}' '{{ device }}'
+    '{{ name }}' '{{ status }}' '{{ photo }}'
+
+  intercom_clear_history: >
+    rm -f /config/www/intercom/call_history.json;
+    rm -f /config/www/intercom/photos/*.jpg;
+    echo "[]" > /config/www/intercom/call_history.json
+
+# scripts.yaml
+# intercom_make_snapshot:
+#   alias: Сделать снимок домофона
+#   mode: parallel
+#   fields:
+#     filename:
+#       description: Имя файла
+#   sequence:
+#     - service: shell_command.intercom_snapshot
+#       data:
+#         filename: '{{ filename }}'
+
+# intercom RGB helpers
+# intercom_rgb_on:
+#   alias: Intercom RGB ON
+#   mode: restart
+#   sequence:
+#     - service: light.turn_on
+#       target:
+#         entity_id: light.panel_panel_rgb
+#       data:
+#         brightness_pct: 100
+#         rgb_color: [0, 255, 0]
+
+# panel_set_backlight100:
+#   sequence:
+#     - action: number.set_value
+#       target:
+#         entity_id: number.panel_panel_backlight
+#       data:
+#         value: '100'
+
+# panel_set_backlight0:
+#   sequence:
+#     - action: number.set_value
+#       target:
+#         entity_id: number.panel_panel_backlight
+#       data:
+#         value: '0'
