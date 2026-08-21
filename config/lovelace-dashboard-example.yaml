@@ -18,21 +18,12 @@ views:
               background: false
               backlog: true
               style: |
-                video::-webkit-media-controls-picture-in-picture-button {
-                  display: none !important;
-                }
-                video::-media-controls-picture-in-picture-button {
-                  display: none !important;
-                }
-                .pictureinpicture,
-                .fullscreen,
-                .mode {
-                  display: none !important;
-                }
+                video::-webkit-media-controls-picture-in-picture-button { display: none !important; }
+                video::-media-controls-picture-in-picture-button { display: none !important; }
+                .pictureinpicture, .fullscreen, .mode { display: none !important; }
             grid_options:
               columns: 30
               rows: 10
-
           - type: conditional
             conditions:
               - condition: state
@@ -69,7 +60,6 @@ views:
             grid_options:
               rows: 10
               columns: 30
-
           - type: custom:intercom-card-v2
             title: Домофон
             items:
@@ -82,7 +72,6 @@ views:
             grid_options:
               columns: 6
               rows: 10
-
           - type: custom:dreame-button-card
             entity: vacuum.dreamebot_l20_ultra_complete
             title: Dreame
@@ -90,14 +79,12 @@ views:
             grid_options:
               columns: 15
               rows: 2
-
           - type: custom:thermostat-button-card
             entity: climate.thermostat
             title: Теплый пол
             grid_options:
               columns: 15
               rows: 2
-
           - show_name: false
             show_icon: true
             type: button
@@ -116,7 +103,6 @@ views:
     icon: mdi:home
     cards: []
     header: {}
-
   - type: sections
     max_columns: 4
     title: ____________D___________
@@ -126,7 +112,6 @@ views:
         cards: []
     cards: []
     icon: mdi:weather-dust
-
   - type: panel
     path: dreame
     title: Dreame
@@ -138,7 +123,6 @@ views:
         map_rotation: 270
         map_zoom: 1.8
     icon: mdi:robot-vacuum
-
   - type: sections
     max_columns: 4
     title: '2'
