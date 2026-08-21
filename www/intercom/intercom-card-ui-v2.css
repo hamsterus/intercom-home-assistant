@@ -1,0 +1,41 @@
+:host { display:block; height:100%; width:100%; box-sizing:border-box; }
+ha-card { height:100%; }
+.card { display:flex; flex-direction:column; height:100%; min-height:0; gap:12px; padding:16px; box-sizing:border-box; }
+.ha-header { display:flex; align-items:center; gap:8px; }
+.ha-header ha-icon { --mdc-icon-size:28px; color:var(--primary-text-color); }
+.ha-header .title { font-size:20px; font-weight:600; color:var(--primary-text-color); line-height:1.2; }
+.sip-status { display:flex; justify-content:center; gap:20px; }
+.sip-item { display:flex; flex-direction:column; align-items:center; gap:4px; font-size:12px; color:var(--secondary-text-color); text-align:center; }
+.dot { width:10px; height:10px; border-radius:50%; background:var(--disabled-text-color); }
+.dot.online { background:var(--success-color); }
+.dot.offline { background:var(--error-color); }
+.status-container { display:flex; flex-direction:column; align-items:center; gap:4px; }
+.state { font-size:18px; font-weight:600; color:var(--primary-text-color); text-align:center; }
+.caller { font-size:14px; color:var(--secondary-text-color); text-align:center; min-height:20px; }
+.history-container { width:100%; display:flex; flex-direction:column; gap:8px; overflow-y:auto; overflow-x:hidden; flex:1 1 auto; margin-bottom:12px; padding-right:2px; -webkit-overflow-scrolling:touch; touch-action:pan-y; }
+.history-item { display:flex; align-items:center; gap:10px; padding:8px; border-radius:10px; background:transparent; border:1px solid var(--divider-color,#e0e0e0); cursor:pointer; transition:border-color .2s ease,background-color .2s ease; }
+.history-item:hover { background:var(--secondary-background-color); }
+.history-item.missed { border-color:var(--error-color,#f44336); }
+.status-tag { font-size:11px; font-weight:500; color:var(--secondary-text-color); background:none; padding:0; border-radius:0; }
+.status-tag.missed,.status-tag.answered { background:none; color:var(--secondary-text-color); }
+.history-thumb { width:44px; height:44px; border-radius:8px; object-fit:cover; flex-shrink:0; background:var(--divider-color); }
+.history-info { flex:1; min-width:0; display:flex; flex-direction:column; gap:2px; }
+.history-meta { display:flex; justify-content:space-between; align-items:center; gap:8px; font-size:13px; font-weight:500; color:var(--primary-text-color); }
+.history-type { font-size:12px; color:var(--secondary-text-color); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.controls-layer { margin-top:auto; display:grid; grid-template-columns:1fr; grid-template-rows:1fr; min-height:56px; }
+.button-container,.buttons { grid-column:1; grid-row:1; display:flex; justify-content:center; align-items:center; gap:20px; }
+.buttons { display:none; }
+ha-icon-button { --mdc-icon-button-size:56px; --mdc-icon-size:28px; }
+#camera.active { color:var(--primary-color); }
+.history-thumb.placeholder { display:flex; align-items:center; justify-content:center; background:var(--secondary-background-color); color:var(--secondary-text-color); border:1px solid var(--divider-color); }
+.history-thumb.placeholder ha-icon { --mdc-icon-size:22px; }
+.history-actions { display:flex; justify-content:center; margin-bottom:8px; }
+.clear-history-btn { display:inline-flex; align-items:center; gap:6px; padding:6px 10px; border:1px solid var(--divider-color); border-radius:8px; background:transparent; color:var(--secondary-text-color); font-size:12px; font-weight:500; cursor:pointer; transition:background-color .2s ease,border-color .2s ease; }
+.clear-history-btn:hover { background:var(--secondary-background-color); }
+.clear-history-btn ha-icon { --mdc-icon-size:16px; }
+.photo-viewer { position:fixed; inset:0; display:none; z-index:1000; }
+.photo-viewer.show { display:flex; align-items:center; justify-content:center; }
+.photo-backdrop { position:absolute; inset:0; background:rgba(0,0,0,.75); }
+.photo-window { position:relative; max-width:95%; max-height:95%; z-index:1; }
+.photo-window img { max-width:90vw; max-height:80vh; border-radius:12px; }
+#photo-close { position:absolute; right:0; top:-45px; color:white; }
