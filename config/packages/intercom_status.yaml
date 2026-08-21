@@ -1,0 +1,62 @@
+rest:
+
+  - resource: http://127.0.0.1:8088/ari/endpoints/PJSIP/9100
+    username: !secret intercom_ari_username
+    password: !secret intercom_ari_password
+    authentication: basic
+    scan_interval: 10
+
+    sensor:
+
+      - name: SIP 9100
+        unique_id: sip_9100_status
+
+        value_template: >
+          {{ value_json.state | default('unknown') }}
+
+        json_attributes:
+          - technology
+          - resource
+          - channel_ids
+
+
+
+  - resource: http://127.0.0.1:8088/ari/endpoints/PJSIP/9101
+    username: !secret intercom_ari_username
+    password: !secret intercom_ari_password
+    authentication: basic
+    scan_interval: 10
+
+    sensor:
+
+      - name: SIP 9101
+        unique_id: sip_9101_status
+
+        value_template: >
+          {{ value_json.state | default('unknown') }}
+
+        json_attributes:
+          - technology
+          - resource
+          - channel_ids
+
+
+
+  - resource: http://127.0.0.1:8088/ari/endpoints/PJSIP/9102
+    username: !secret intercom_ari_username
+    password: !secret intercom_ari_password
+    authentication: basic
+    scan_interval: 10
+
+    sensor:
+
+      - name: SIP 9102
+        unique_id: sip_9102_status
+
+        value_template: >
+          {{ value_json.state | default('unknown') }}
+
+        json_attributes:
+          - technology
+          - resource
+          - channel_ids
