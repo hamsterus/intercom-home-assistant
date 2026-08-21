@@ -1,0 +1,33 @@
+# V3 test dashboard.
+# V2 dashboard remains untouched. Add the V3 resources in Lovelace first.
+#
+# resources:
+#   - url: /local/intercom/intercom-card-v3.js?v=3
+#     type: module
+#
+# The V3 card uses the same entities and services as V2, but all runtime
+# globals are isolated under IntercomServiceV3 / IntercomSIPV3 /
+# IntercomCallsV3 / IntercomRGBV3.
+
+views:
+  - title: Домофон V3
+    path: intercom-v3
+    type: sections
+    max_columns: 4
+    sections:
+      - type: grid
+        columns: 37
+        square: false
+        cards:
+          - type: custom:intercom-card-v3
+            title: Домофон V3
+            items:
+              - entity: sensor.sip_9100
+                name: Панель
+              - entity: sensor.sip_9101
+                name: Этаж
+              - entity: sensor.sip_9102
+                name: Подъезд
+            grid_options:
+              columns: 6
+              rows: 10
