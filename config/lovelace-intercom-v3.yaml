@@ -1,12 +1,10 @@
-# V3 test dashboard.
-# V2 dashboard remains untouched. Add the V3 resources in Lovelace first.
-#
-# resources:
-#   - url: /local/intercom/intercom-card-v3.js?v=3
+# V3 dashboard.
+# The V3 custom card is stored in /local/intercom.v3.
+# Add this resource in Lovelace resources if the dashboard is managed through UI:
+#   - url: /local/intercom.v3/intercom-card-v3.js?v=3
 #     type: module
 #
-# The V3 card uses the same entities and services as V2, but all runtime
-# globals are isolated under IntercomServiceV3 / IntercomSIPV3 /
+# V3 runtime globals are isolated under IntercomServiceV3 / IntercomSIPV3 /
 # IntercomCallsV3 / IntercomRGBV3.
 
 views:
