@@ -1,24 +1,96 @@
-# V3 dashboard.
-# The V3 custom card is stored in /local/intercom.v3.
-# Add this resource in Lovelace resources if the dashboard is managed through UI:
-#   - url: /local/intercom.v3/intercom-card-v3.js?v=3
-#     type: module
-#
-# V3 runtime globals are isolated under IntercomServiceV3 / IntercomSIPV3 /
-# IntercomCallsV3 / IntercomRGBV3.
+# Home Assistant V3 dashboard.
+# YAML-mode dashboard. Production V2 is not referenced here.
+
+resources:
+  - url: /webrtc/webrtc-camera.js?v=v3.6.1
+    type: module
+  - url: /local/intercom.v3/intercom-service.js?v=3
+    type: module
+  - url: /local/intercom.v3/intercom-card.js?v=3
+    type: module
+  - url: /local/dreame.v3/dreame-card.js?v=3
+    type: module
+  - url: /local/dreame.v3/dreame-button-card.js?v=3
+    type: module
+  - url: /local/ru-calendar-card.js?v=3
+    type: module
+  - url: /local/thermostat-button-card.js?v=3
+    type: module
+  - url: /hacsfiles/lovelace-flip-clock-card/flip-clock-card.js?hacstag=11020220032653
+    type: module
 
 views:
-  - title: Домофон V3
-    path: intercom-v3
-    type: sections
-    max_columns: 4
+  - type: sections
     sections:
       - type: grid
         columns: 37
         square: false
         cards:
+          - type: conditional
+            conditions:
+              - condition: state
+                entity: input_boolean.intercom_camera
+                state: 'on'
+            card:
+              type: custom:webrtc-camera
+              url: bas_ip
+              ui: true
+              muted: true
+              background: false
+              backlog: true
+              style: |
+                video::-webkit-media-controls-picture-in-picture-button {
+                  display: none !important;
+                }
+                video::-media-controls-picture-in-picture-button {
+                  display: none !important;
+                }
+                .pictureinpicture,
+                .fullscreen,
+                .mode {
+                  display: none !important;
+                }
+            grid_options:
+              columns: 30
+              rows: 10
+          - type: conditional
+            conditions:
+              - condition: state
+                entity: input_boolean.intercom_camera
+                state: 'off'
+            card:
+              type: grid
+              columns: 2
+              square: false
+              cards:
+                - type: custom:flip-clock-card
+                  theme: ios-dark
+                  show_seconds: false
+                  size: 100
+                  title: ''
+                  am_pm_position: right
+                  am_pm_orientation: horizontal
+                  am_pm_distance: 15
+                  am_pm_size: 50
+                  am_pm_style: flip
+                  show_label: false
+                - type: weather-forecast
+                  entity: weather.forecast_home_assistant
+                  show_current: true
+                  show_forecast: true
+                  forecast_type: daily
+                  forecast_slots: 7
+                - type: custom:ru-calendar-card
+                  entity: calendar.kalendar
+                - type: markdown
+                  title: Статус дома
+                  content: |
+                    ### Привет!
+            grid_options:
+              rows: 10
+              columns: 30
           - type: custom:intercom-card-v3
-            title: Домофон V3
+            title: Домофон
             items:
               - entity: sensor.sip_9100
                 name: Панель
@@ -29,3 +101,73 @@ views:
             grid_options:
               columns: 6
               rows: 10
+          - type: custom:dreame-button-card
+            entity: vacuum.dreamebot_l20_ultra_complete
+            title: Dreame
+            navigation_path: /dashboard-intercom-v3/view-2?kiosk=1
+            grid_options:
+              columns: 15
+              rows: 2
+          - type: custom:thermostat-button-card
+            entity: climate.thermostat
+            title: Теплый пол
+            grid_options:
+              columns: 15
+              rows: 2
+          - show_name: false
+            show_icon: true
+            type: button
+            entity: switch.din_master_switch
+            name: Мастер-выключатель
+            icon: mdi:power
+            show_state: true
+            tap_action:
+              action: none
+            grid_options:
+              rows: 2
+            hold_action:
+              action: toggle
+        column_span: 4
+    max_columns: 4
+    icon: mdi:home
+    cards: []
+    header: {}
+  - type: sections
+    max_columns: 4
+    title: 'D'
+    path: d
+    sections:
+      - type: grid
+        cards: []
+    cards: []
+    icon: mdi:weather-dust
+  - type: panel
+    path: dreame
+    title: Dreame
+    cards:
+      - type: custom:dreame-card
+        entity: vacuum.dreamebot_l20_ultra_complete
+        map_entity: camera.dreamebot_l20_ultra_complete_map
+        title: Dreame L20 Ultra Complete
+        map_rotation: 270
+        map_zoom: 1.8
+    icon: mdi:robot-vacuum
+  - type: sections
+    max_columns: 4
+    title: '2'
+    path: view-2
+    sections:
+      - type: grid
+        columns: 36
+        square: false
+        cards:
+          - type: custom:dreame-card
+            entity: vacuum.dreamebot_l20_ultra_complete
+            map_entity: camera.dreamebot_l20_ultra_complete_map
+            title: Dreame L20 Ultra Complete
+            map_rotation: 270
+            map_zoom: 1.5
+            grid_options:
+              columns: full
+              rows: 10
+        column_span: 4
