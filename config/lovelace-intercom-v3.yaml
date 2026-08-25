@@ -4,7 +4,9 @@
 resources:
   - url: /webrtc/webrtc-camera.js?v=v3.6.1
     type: module
-  - url: /local/intercom.v3/intercom-card.js?v=6
+  - url: /local/intercom.v3/intercom-service.js?v=3
+    type: module
+  - url: /local/intercom.v3/intercom-card.js?v=3
     type: module
   - url: /local/dreame.v3/dreame-card.js?v=3
     type: module
